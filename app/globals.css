@@ -1,0 +1,127 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Updated to cream and orange theme for GPS bracelet app */
+  --background: oklch(0.98 0.01 85); /* Warm cream */
+  --foreground: oklch(0.15 0.02 45); /* Dark brown */
+  --card: oklch(0.96 0.015 80); /* Light cream */
+  --card-foreground: oklch(0.15 0.02 45);
+  --popover: oklch(0.98 0.01 85);
+  --popover-foreground: oklch(0.15 0.02 45);
+  --primary: oklch(0.65 0.18 45); /* Warm orange */
+  --primary-foreground: oklch(0.98 0.01 85);
+  --secondary: oklch(0.92 0.02 75); /* Light cream */
+  --secondary-foreground: oklch(0.25 0.03 45);
+  --muted: oklch(0.94 0.015 80);
+  --muted-foreground: oklch(0.45 0.02 45);
+  --accent: oklch(0.72 0.15 35); /* Burnt orange accent */
+  --accent-foreground: oklch(0.98 0.01 85);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.98 0.01 85);
+  --border: oklch(0.88 0.02 75);
+  --input: oklch(0.94 0.015 80);
+  --ring: oklch(0.65 0.18 45);
+  --chart-1: oklch(0.65 0.18 45); /* Primary orange */
+  --chart-2: oklch(0.72 0.15 35); /* Burnt orange */
+  --chart-3: oklch(0.55 0.12 25); /* Deep orange */
+  --chart-4: oklch(0.78 0.08 65); /* Light orange */
+  --chart-5: oklch(0.45 0.15 15); /* Dark orange */
+  --radius: 0.75rem;
+  --sidebar: oklch(0.96 0.015 80);
+  --sidebar-foreground: oklch(0.15 0.02 45);
+  --sidebar-primary: oklch(0.65 0.18 45);
+  --sidebar-primary-foreground: oklch(0.98 0.01 85);
+  --sidebar-accent: oklch(0.92 0.02 75);
+  --sidebar-accent-foreground: oklch(0.25 0.03 45);
+  --sidebar-border: oklch(0.88 0.02 75);
+  --sidebar-ring: oklch(0.65 0.18 45);
+}
+
+.dark {
+  /* Dark mode with sophisticated dark theme inspired by design */
+  --background: oklch(0.08 0.01 45); /* Deep dark */
+  --foreground: oklch(0.95 0.01 85); /* Warm white */
+  --card: oklch(0.12 0.015 45); /* Dark card */
+  --card-foreground: oklch(0.95 0.01 85);
+  --popover: oklch(0.08 0.01 45);
+  --popover-foreground: oklch(0.95 0.01 85);
+  --primary: oklch(0.72 0.15 35); /* Bright orange */
+  --primary-foreground: oklch(0.08 0.01 45);
+  --secondary: oklch(0.18 0.02 45); /* Dark secondary */
+  --secondary-foreground: oklch(0.95 0.01 85);
+  --muted: oklch(0.15 0.015 45);
+  --muted-foreground: oklch(0.65 0.02 75);
+  --accent: oklch(0.65 0.18 45); /* Orange accent */
+  --accent-foreground: oklch(0.08 0.01 45);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.95 0.01 85);
+  --border: oklch(0.22 0.02 45);
+  --input: oklch(0.15 0.015 45);
+  --ring: oklch(0.72 0.15 35);
+  --chart-1: oklch(0.72 0.15 35);
+  --chart-2: oklch(0.65 0.18 45);
+  --chart-3: oklch(0.78 0.12 25);
+  --chart-4: oklch(0.58 0.15 55);
+  --chart-5: oklch(0.82 0.08 15);
+  --sidebar: oklch(0.12 0.015 45);
+  --sidebar-foreground: oklch(0.95 0.01 85);
+  --sidebar-primary: oklch(0.72 0.15 35);
+  --sidebar-primary-foreground: oklch(0.08 0.01 45);
+  --sidebar-accent: oklch(0.18 0.02 45);
+  --sidebar-accent-foreground: oklch(0.95 0.01 85);
+  --sidebar-border: oklch(0.22 0.02 45);
+  --sidebar-ring: oklch(0.72 0.15 35);
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
