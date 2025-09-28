@@ -37,7 +37,7 @@ wss.on('connection', (ws) => {
     // Make sure the message is a string or buffer
     const messageString = msg.toString();
     console.log(`Received from frontend: ${messageString}`);
-    port.write(messageString, (err) => {
+    port.write(messageString + '\n', (err) => {
       if (err) console.error('Error writing to Arduino:', err);
     });
   });
