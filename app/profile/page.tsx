@@ -4,10 +4,11 @@ import { Navigation } from "@/components/navigation"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { BraceletCommunication } from "@/components/bracelet-communication"
 import { GoogleMap } from "@/components/google-maps"
 import { LocationSearch } from "@/components/location-search"
 import { MapPin, Leaf, Battery, Bluetooth, NavigationIcon, Calendar, Edit } from "lucide-react"
-import { useRef } from "react"
+import { useRef, useState } from "react"
 
 // Sample waypoints data
 const sampleWaypoints = [
@@ -39,6 +40,14 @@ const sampleWaypoints = [
 
 export default function ProfilePage() {
   const mapRef = useRef<any>(null)
+  const [steps, setSteps] = useState<any[]>([])
+  const [currentStepIndex, setCurrentStepIndex] = useState(0)
+  const currentStep = steps[currentStepIndex]
+
+  const handleStepsUpdate = (newSteps: any[]) => {
+    setSteps(newSteps)
+    setCurrentStepIndex(0)
+  }
 
   const handleLocationSearch = async (location: string) => {
     if (!window.google) return
@@ -50,12 +59,17 @@ export default function ProfilePage() {
           lat: results[0].geometry.location.lat(),
           lng: results[0].geometry.location.lng(),
         }
-        // Trigger directions in the map component
         if (mapRef.current) {
-          mapRef.current.getDirections(destination, location)
+          mapRef.current.getDirections(destination, location, handleStepsUpdate)
         }
       }
     })
+  }
+
+  const handleStepAdvance = () => {
+    if (currentStepIndex < steps.length - 1) {
+      setCurrentStepIndex(currentStepIndex + 1)
+    }
   }
 
   return (
@@ -142,6 +156,15 @@ export default function ProfilePage() {
         </div>
 
         <LocationSearch onLocationSearch={handleLocationSearch} />
+
+        {steps.length > 0 && (
+          <BraceletCommunication
+            currentStep={currentStep}
+            steps={steps}
+            currentStepIndex={currentStepIndex}
+            onStepAdvance={handleStepAdvance}
+          />
+        )}
 
         <Card>
           <CardHeader>
